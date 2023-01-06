@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """A quiz to understand yourself in the context of 'The Office' | Jesse Ryan"""
 
+
+
+
 #Prompt user with a welcome
 print("\nWhich character from 'The Office' would be your best friend? \n ")
 
@@ -321,7 +324,7 @@ userprofile.append(q7[q7_response])
 
 responses = responses + 1
 
-
+print(most_frequent(userprofile))
 print(responses)
 print(userprofile)
 
