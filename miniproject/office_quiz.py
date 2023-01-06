@@ -23,7 +23,7 @@ while responses <= 0:
 
     #Display the first question
     print(q1["question"])
-
+    print(" \n")
     #Convert q1 keys to a list
     q1_list= list(q1.keys())
 
@@ -36,7 +36,7 @@ while responses <= 0:
     print(q1_list[6])
     print(q1_list[7])
     print(q1_list[8])
-
+    print(" \n")
     #ask for a response and format to lowercase 
     q1_response= input(">>>").lower()
    
@@ -66,7 +66,7 @@ while responses == 1:
         "quirky cottage":"Pam "}
 
     print(q2["question"])
-    
+    print(" \n")
     #Convert q2 keys to a list
     q2_list= list(q2.keys())
  
@@ -83,7 +83,7 @@ while responses == 1:
   
     #ask for a response and format to lowercase 
     q2_response= input(">>>").lower()
- 
+    print(" \n") 
     #check the user input against the q2 dictionary
     if q2_response not in q2:
   
@@ -94,6 +94,54 @@ while responses == 1:
  
 userprofile.append(q2[q2_response])
 responses = responses + 1
+
+#two successful responses allow the user to proceed
+while responses == 2:
+
+    q3= {"question": "Pick a party theme:",
+    "Mardi Gras":"Michael",
+    "pirates":"Creed",
+    "tea":"Angela",
+    "football":"Jim",
+    "casino":"Stanley",
+    "medieval":"Dwight",
+    "burlesque":"Kevin",
+    "artistic":"Pam ",
+    "crab boil":"Andy"
+    } 
+
+    print(q3["question"])
+    print(" \n") 
+    #Convert q2 keys to a list
+    q3_list= list(q3.keys())
+ 
+    #print keys 2-9 from the list
+    print(q3_list[1])
+    print(q3_list[2])
+    print(q3_list[3])
+    print(q3_list[4])
+    print(q3_list[5])
+    print(q3_list[6])
+    print(q3_list[7])
+    print(q3_list[8])
+    print(" \n")
+  
+    #ask for a response and format to lowercase 
+    q3_response= input(">>>").lower()
+ 
+    #check the user input against the q2 dictionary
+    if q3_response not in q3:
+  
+        print(" Please check your spelling and try again")
+        q3_response= input(">>>").lower()
+    else:
+        break
+ 
+userprofile.append(q3[q3_response])
+responses = responses + 1
+
+
+
 
 print(userprofile)
 print("q3")       
