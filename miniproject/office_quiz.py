@@ -6,11 +6,11 @@ print("\nWhich character from 'The Office' would be your best friend? \n ")
 
 q1= {"question": "Pick a type of paper:",
         "card stock": "Michael",
-        "printer paper": "Jim ",
-        "newspaper": "Stanley ", 
+        "printer paper": "Jim",
+        "newspaper": "Stanley", 
         "wrapping paper": "Angela",
         "glossy paper": "Pam",
-        "papyrus": "Andy ", 
+        "papyrus": "Andy", 
         "sandpaper": "Dwight",
         "paper bag": "Kevin",
         "rolling paper": "Creed",
@@ -55,15 +55,15 @@ responses = responses + 1
 while responses == 1: 
     
     q2= {"question": "Pick a home:",
-        "lighthouse":"Creed",
-        "barn":"Dwight",
+        "lighthouse": "Creed",
+        "barn": "Dwight",
         "frat house": "Andy",
         "private jet": "Michael",
         "city apartment": "Jim",
-        "brownstone": "Stanley ",
+        "brownstone": "Stanley",
         "duplex": "Kevin ",
         "country mansion": "Angela",
-        "quirky cottage":"Pam "}
+        "quirky cottage": "Pam"}
 
     print(q2["question"])
     print(" \n")
@@ -99,15 +99,15 @@ responses = responses + 1
 while responses == 2:
 
     q3= {"question": "Pick a party theme:",
-    "Mardi Gras":"Michael",
-    "pirates":"Creed",
-    "tea":"Angela",
-    "football":"Jim",
-    "casino":"Stanley",
-    "medieval":"Dwight",
-    "burlesque":"Kevin",
-    "artistic":"Pam ",
-    "crab boil":"Andy"
+    "mardi gras": "Michael",
+    "pirates": "Creed",
+    "tea": "Angela",
+    "football": "Jim",
+    "casino": "Stanley",
+    "medieval": "Dwight",
+    "burlesque": "Kevin",
+    "artistic": "Pam",
+    "crab boil": "Andy"
     } 
 
     print(q3["question"])
@@ -140,11 +140,97 @@ while responses == 2:
 userprofile.append(q3[q3_response])
 responses = responses + 1
 
+while responses == 3:
 
+    q4= {"question": "Pick a career:",
+    "graphic designer": "Pam",
+    "professor": "Stanley",
+    "writer": "Angela",
+    "survivalist": "Dwight",
+    "bartender": "Kevin",
+    "actor": "Andy",
+    "bitcoin developer": "Creed",
+    "ceo": "Michael",
+    "sports agent": "Jim"
+     }
 
+    print(q4["question"])
+    print(" \n") 
+    
+    #Convert q2 keys to a list
+    q4_list= list(q4.keys())
+ 
+    #print keys 2-9 from the list
+    print(q4_list[1])
+    print(q4_list[2])
+    print(q4_list[3])
+    print(q4_list[4])
+    print(q4_list[5])
+    print(q4_list[6])
+    print(q4_list[7])
+    print(q4_list[8])
+    print(" \n")
+  
+    #ask for a response and format to lowercase 
+    q4_response= input(">>>").lower()
+ 
+    #check the user input against the q2 dictionary
+    if q4_response not in q4:
+  
+        print(" Please check your spelling and try again")
+        q4_response= input(">>>").lower()
+    else:
+        break
+ 
+userprofile.append(q4[q4_response])
+responses = responses + 1
 
-print(userprofile)
-print("q3")       
+while responses == 4:
+
+    q5= {"question": "How will you probably die?", 
+        "alcohol poisoning": "Michael",
+        "sleeping": "Pam ",
+        "heart attack": "Kevin", 
+        "autoerotic asphyxiation": "Creed",
+        "not possible": "Dwight",
+        "lost at sea": "Andy ",
+        "car accident": "Jim ",
+        "sugar overdose": "Stanley",
+        "eaten by cats": "Angela ",
+        }
+        
+    print(q5["question"])
+    print(" \n") 
+        
+    #Convert q5 keys to a list
+    q5_list= list(q5.keys())
+ 
+    #print keys 2-9 from the list
+    print(q5_list[1])
+    print(q5_list[2])
+    print(q5_list[3])
+    print(q5_list[4])
+    print(q5_list[5])
+    print(q5_list[6])
+    print(q5_list[7])
+    print(q5_list[8])
+    print(" \n")
+  
+    #ask for a response and format to lowercase 
+    q5_response= input(">>>").lower()
+ 
+    #check the user input against the q2 dictionary
+    if q5_response not in q5:
+  
+        print(" Please check your spelling and try again")
+        q5_response= input(">>>").lower()
+    else:
+        break
+ 
+userprofile.append(q5[q5_response])
+
+responses = responses + 1
+      
 print(responses)
 print(userprofile)
 
