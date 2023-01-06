@@ -119,7 +119,7 @@ while responses == 2:
 
     print(q3["question"])
     print(" \n") 
-    #Convert q2 keys to a list
+    #Convert q3 keys to a list
     q3_list= list(q3.keys())
  
     #print keys 2-9 from the list
@@ -136,7 +136,7 @@ while responses == 2:
     #ask for a response and format to lowercase 
     q3_response= input(">>>").lower()
  
-    #check the user input against the q2 dictionary
+    #check the user input against the q3 dictionary
     if q3_response not in q3:
   
         print(" Please check your spelling and try again")
@@ -164,7 +164,7 @@ while responses == 3:
     print(q4["question"])
     print(" \n") 
     
-    #Convert q2 keys to a list
+    #Convert q4 keys to a list
     q4_list= list(q4.keys())
  
     #print keys 2-9 from the list
@@ -181,7 +181,7 @@ while responses == 3:
     #ask for a response and format to lowercase 
     q4_response= input(">>>").lower()
  
-    #check the user input against the q2 dictionary
+    #check the user input against the q4 dictionary
     if q4_response not in q4:
   
         print(" Please check your spelling and try again")
@@ -226,7 +226,7 @@ while responses == 4:
     #ask for a response and format to lowercase 
     q5_response= input(">>>").lower()
  
-    #check the user input against the q2 dictionary
+    #check the user input against the q5 dictionary
     if q5_response not in q5:
   
         print(" Please check your spelling and try again")
@@ -272,7 +272,7 @@ while responses == 5:
     #ask for a response and format to lowercase 
     q6_response= input(">>>").lower()
  
-    #check the user input against the q2 dictionary
+    #check the user input against the q6 dictionary
     if q6_response not in q6:
   
         print(" Please check your spelling and try again")
@@ -300,7 +300,7 @@ while responses == 6:
     print(q7["question"])
     print(" \n") 
         
-    #Convert q5 keys to a list
+    #Convert q7 keys to a list
     q7_list= list(q7.keys())
  
     #print keys 2-9 from the list
@@ -328,10 +328,10 @@ userprofile.append(q7[q7_response])
 
 responses = responses + 1
 
-#print(responses)
-#print(userprofile)
+print(responses)
+print(userprofile)
 
-#print(most_frequent(userprofile))
+#print the most frequent Office Character from the userprofile list(most_frequent(userprofile))
 print("Thank you for participating in this research study. \n")
 print("Your best friend would be: \n  ")
 print(most_frequent(userprofile))
