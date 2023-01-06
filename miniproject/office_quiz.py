@@ -231,6 +231,97 @@ userprofile.append(q5[q5_response])
 
 responses = responses + 1
       
+
+while responses == 5:
+    q6= {"question": "Pick one thing for your freezer:",
+    "steak": "Andy",
+    "ice cream": "Jim",
+    "ice": "Angela ",
+    "cookie dough": "Kevin",
+    "money": "Creed",
+    "bananas": "Pam",
+    "microwave jalapeno poppers": "Stanley",
+    "venison": "Dwight",
+    "frozen dinner": "Michael",
+    }
+
+    print(q6["question"])
+    print(" \n") 
+        
+    #Convert q6 keys to a list
+    q6_list= list(q6.keys())
+ 
+    #print keys 2-9 from the list
+    print(q6_list[1])
+    print(q6_list[2])
+    print(q6_list[3])
+    print(q6_list[4])
+    print(q6_list[5])
+    print(q6_list[6])
+    print(q6_list[7])
+    print(q6_list[8])
+    print(" \n")
+  
+    #ask for a response and format to lowercase 
+    q6_response= input(">>>").lower()
+ 
+    #check the user input against the q2 dictionary
+    if q6_response not in q6:
+  
+        print(" Please check your spelling and try again")
+        q6_response= input(">>>").lower()
+    else:
+        break
+ 
+userprofile.append(q6[q6_response])
+
+responses = responses + 1
+
+while responses == 6:
+    q7= {"question": "How did you get in trouble in high school?",
+    "not participating": "Pam",
+    "talking": "Andy",
+    "pulling pranks": "Jim",
+    "eating in class": "Stanley",
+    "absence": "Creed ",
+    "bullying": "Michael",
+    "skipping gym": "Kevin",
+    "arguing with teachers": "Dwight",
+    "didn't happen": "Angela"
+    }
+
+    print(q7["question"])
+    print(" \n") 
+        
+    #Convert q5 keys to a list
+    q7_list= list(q7.keys())
+ 
+    #print keys 2-9 from the list
+    print(q7_list[1])
+    print(q7_list[2])
+    print(q7_list[3])
+    print(q7_list[4])
+    print(q7_list[5])
+    print(q7_list[6])
+    print(q7_list[7])
+    print(q7_list[8])
+    print(" \n")
+  
+    #ask for a response and format to lowercase 
+    q7_response= input(">>>").lower()
+ 
+    #check the user input against the q7 dictionary
+    if q7_response not in q7:
+        print(" Please check your spelling and try again")
+        q7_response= input(">>>").lower()
+    else:
+        break
+ 
+userprofile.append(q7[q7_response])
+
+responses = responses + 1
+
+
 print(responses)
 print(userprofile)
 
