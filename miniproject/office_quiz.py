@@ -328,8 +328,8 @@ userprofile.append(q7[q7_response])
 
 responses = responses + 1
 
-print(responses)
-print(userprofile)
+#print(responses)
+#print(userprofile)
 
 #print the most frequent Office Character from the userprofile list(most_frequent(userprofile))
 print("Thank you for participating in this research study. \n")
