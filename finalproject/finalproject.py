@@ -1,19 +1,51 @@
 #!/usr/bin/env python3
-"""Final Project - Topic TBD | Jesse Ryan"""
-import requests
 
-censusAPI= "https://api.census.gov/data/2021/acs/acs1/pums?get=PWGTP,AGEPs"
-age_date = requests.get("f{censusAPI}[0][1]")
-print(age_date)
+"""Python Final Project - Go Fish | Jesse Ryan"""
 
-#import requests
 
-#censusAPI = "https://api.census.gov/data/2021/acs/acs1/pums"
+from card_deck import *
 
-#def main():
- #   age_data = requests.get(f"{censusAPI}PWGTP,AGEP")
+#Deck()
+#Deal 5 cards from the deck to three different players
+d = Deck()
 
-  #  print( age_data.json().keys() )
+#view the contents of the deck before dealing
+#print("The deck contains: ", d)
 
-#if __name__ == "__main__":
- #   main()
+ready = ["yes", "y"]
+start = input("Are you ready to play 'Go Fish'?").lower
+print("\n")
+
+
+
+print("Dealing...")
+
+
+#else:
+ #   print("Please try again. Enter 'y' or 'yes'")
+  #  break
+
+#pile = d.deal(1,52)
+
+
+#pile = d.remove(hands) # - hands
+
+#p = Pile(d.deal(1,52))
+#hands = p.deal(2,5)
+
+
+#print("The pile contains: ", pile)
+
+#print("The deck contains: ", d) 
+##print the player's hand only
+#print(hands[0])
+
+#print player 2's hand
+#print(hands[1])
+
+#print the pile
+#print(p)
+
+
+
+
