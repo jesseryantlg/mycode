@@ -10,10 +10,12 @@ from card_deck import *
 d = Deck()
 
 #view the contents of the deck before dealing
-#print("The deck contains: ", d)
+print("The deck contains: ", d)
 
-ready = ["yes", "y"]
-start = input("Are you ready to play 'Go Fish'?").lower
+#Uncomment the lines below to incorporate user permissions. Leaving commented to work on the game mechanics
+#ready = ["yes", "y"]
+#start = input("Are you ready to play 'Go Fish'?").lower
+
 print("\n")
 
 
@@ -23,9 +25,28 @@ print("Dealing...")
 
 #else:
  #   print("Please try again. Enter 'y' or 'yes'")
-  #  break
+#  break
+#Shuffle the deck
 
-#pile = d.deal(1,52)
+print("Shuffling the deck...")
+
+d.shuffle()
+print("The deck contains: ", d)
+
+#Deal 5 cards to two players. 
+#Define the pile
+
+hands = d.deal(2, 5)
+
+
+#validate that cards were transferred from the deck to the pile
+print("The players are holding: ", hands)
+print("\n")
+
+print("The deck contains: ", d)
+
+print("\n")
+print("Player one has: ", hands[0])
 
 
 #pile = d.remove(hands) # - hands
