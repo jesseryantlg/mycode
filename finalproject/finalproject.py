@@ -1,98 +1,127 @@
 #!/usr/bin/env python3
+"""TLG Final Project - Go Fish | Jesse Ryan"""
 
-"""Python Final Project - Go Fish | Jesse Ryan"""
-
+"""Chad's  TO DO: how to group cards by face values into "books"- groups of
+four matching cards- and tallying how many books a player has to
+determine the winner """
 
 from card_deck import *
-from collections import Counter
+from easy_timing import timer 
+from time import sleep
+import pyinputplus as pyip
 import random
-deck = ["A♦", "A♣", "A♥", "A♠", "2♦", "2♣", "2♥", "2♠", "3♦", "3♣", "3♥", "3♠", "4♦", "4♣", "4♥", "4♠", "5♦", "5♣", "5♥", "5♠", "6♦", "6♣", "6♥", "6♠", "7♦", "7♣", "7♥", "7♠", "8♦", "8♣", "8♥", "8♠", "9♦", "9♣", "9♥", "9♠", "10♦", "10♣", "10♥", "10♠", "J♦", "J♣", "J♥", "J♠", "Q♦", "Q♣", "Q♥", "Q♠", "K♦", "K♣", "K♥", "K♠"]
-pond = []
+
+# Create a "card deck" object
+d = Deck()
 p1hand = []
 p2hand = []
 p1matches = []
-p1score = 0
 p2matches = []
+p1score = 0
 p2score = 0
 
-#view the contents of the deck before dealing
-print("The deck contains: ", deck)
+#FOR TESTING - COMMENT OUT #
+print("FOR TESTING - COMMENT OUT - Visualize current lists. \n")
+print("The deck contains: ",d) #Visualize the deck of cards
+print("Player 1 is holding: ", p1hand)
+print("Player 2 is holding: ",p2hand)
+print("PLayer 1's matches: ",p1matches)
+print("Player 2's matches: ", p2matches)
+print("Player 1's score: ",p1score)
+print("Player 2's score: ",p2score)
 
-#Uncomment the lines below to incorporate user permissions. Leaving commented to work on the game mechanics
-#ready = ["yes", "y"]
-#start = input("Are you ready to play 'Go Fish'?").lower
+#Introduction/Greeting
+print("Intro TBD -...He challenges you to a single game of 'Go Fish' to settle everything for good. \n")
+#define an object for the user's input
+start_game =  pyip.inputYesNo("    Are you ready to start? \n >>'Yes or No' \n ") 
 
-print("\n")
+#For TESTING - COMMENT OUT
+#print("TO BE COMMENTED OUT - INPUT VALUE IS ", start_game)
 
-#else:
- #   print("Please try again. Enter 'y' or 'yes'")
-#  break
-
+#Verify that the player would like to begin
+while start_game != "yes":
+    start_game = pyip.inputYesNo("Are you ready to play 'Go Fish'? \n  >>>")
+else:
+    sleep(.5)
+    print("\n Great! Let's start!! \n")
+ 
 #Shuffle the deck
-print("Shuffling the deck...")
-print("\n")
-random.shuffle(deck)
-
-#d.shuffle()
-
-#Visualize the shuffled deck
-print("The deck contains: ", deck)
-print("\n")
+d.shuffle()
+print("       Everyday I'm suffling...\n")
+sleep(1)     
+print("                                 Shuffling...\n")
+sleep(1)
+print("                                              Shuffling...\n")
+sleep(1)
 
 #Deal 5 cards to 2 players
-print("Dealing...")
-print("\n")
+hands = d.deal(2, 5)
 
-for x in range(5):
-    deal = random.choice(deck)
-    p1hand.append(deal)
-    deck.remove(deal)
+p1hand = hands[0] # assigns the first five card hand to a player
+p2hand = hands[1] # assigns the second five card hand to a player
+pond = d # remaining cards in the pile
 
-for x in range(5):
-    deal = random.choice(deck)
-    p2hand.append(deal)
-    deck.remove(deal)
+colors = ["blue", "yellow", "red"]
 
+go_first = random.choice(colors) 
 
-#old code - uses card_deck package -hands = d.deal(2, 5)
+print("Decide who goes first. What is the color of the day?", "\n" )
 
-#create objects for each player's hand,player matches, and the pond
-#p1hand = hands[0]
-#p2hand = hands[1]
-#p1matches = []
-#p1score = 0
-#p2matches = []
-#p2score = 0
-#pond = d
+choice = pyip.inputChoice(colors)
 
-#validate that cards were transferred from the deck to the pile
-print("FOR TESTING PURPOSES - COMMENT OUT - The players are holding: ","\n","Player 1: ", p1hand, "\nPlayer 2: ", p2hand, "\n")
-print("\n")
-print("FOR TESTING PURPOSES - COMMENT OUT - The pond contains: ",pond)
-print("\n")
-print("You have: ", p1hand)
-print("\n")
-print("Player 1 score: ", p1score)
-print("\n")
-print("Player 2 score: ", p2score)
+print("You chose: ", choice, "\n")
+
+print("The color of the day is:  ", go_first, "\n")
+
+if choice == go_first:
+    print("You chose wisely. You go first. \n For which card would you like to ask Player 2 if they have a match? ")
+    for card in p1hand:
+        cardvalue= card.get_typeable_name()
+        print(cardvalue)
+else: 
+    print("You chose poorly. Player 2 goes first. \n")
 
 
 
-#guess = input("What card would you like to ask for?")
-#response = Card.get_from_typeable_name(guess)
+#while True:
+ #   guess= input(">")
+    # for testing purposes, we'll let player 2 ask for as many cards as they want
+    # until we type "stop"
+#    if guess == "stop":
+ #       break
+  #  found= False
 
-#print(response)
+    # loop over all card objects in p1hand to check if they have the card(s) we asked for
+   # for card in p1hand:
+        # return the card as a string so its easier to check
+    #    cardvalue= card.get_typeable_name()
 
-# 'face', 'get_face_from_typeable_name', 'get_from_typeable_name', 'get_suit_from_typeable_name', 'get_typeable_name', 'suit'
+        # we will check if the value of "guess" (for example, "2","K","A", etc.)
+        # is in the name of the "cardvalue" variable (for example, "2D","KC")
+        # NOTE: "2D" is two of diamonds, "KC" is king of clubs, etc.
 
-#for x in p1hand:
- #   y= x.__str__()
-  #  if guess in y:
-   #     print(y)
-   # else:
-       # print("go fish!")
+     #   if guess in cardvalue:
+      #      print(card)         # announce what card is a match (printing card and not cardvalue shows the lil card emoji)
+       #     found= True         # set a boolean as a flag that a match was made
+        #    p2hand.append(card) # add that matching card to player 2's hand
+         #   p1hand.remove(card) # remove that card from player 1's hand
+                                # all of this will repeat over all other cards in player 1's hand
 
-#print(guess)
+    # if found == False (no matches)
+   # if not found:
+        # announce that the other player can pound sand
+    #    print("Go fish, sucka!")
 
+        # grab a card from the "pond" variable
+     #   new_card= pond.pop()   # this grabs the first card in the deck
 
-#if guess in p1hand:
+        # add that new card to player 2's hand
+      #  p2hand.append(new_card)
+
+# debug output displaying all cards in both players' hands and in the remaining deck
+print("Player 1's hand:", p1hand)
+print("HIDDEN - Player 2's hand:", p2hand)
+print("HIDDEN - Pond:", pond)
+print("Player 1's matches: ", p1matches)
+print("Player 2's matches: ", p2matches)
+
