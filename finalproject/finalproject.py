@@ -13,76 +13,130 @@ pond = []
 p1hand = []
 p2hand = []
 p1matches = []
-p1score = 0
-p2score = 0
+p2matches = []
+p1score = len(p1matches)
+p2score = len(p2matches)
 suits = ["H", "S", "C", "D"]                                            
 values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 colors = ["blue", "yellow", "red"]
 
-
-#Introduce players to the game
-print("Intro....\n")
-print(gamelogo, "\n")
-
-#define an object for the users input
-start_game = pyip.inputYesNo("  Are you ready to play 'Go Fish'? \n >>>")
-
-#Allow the player to opt-in when ready to play
-while start_game != "yes":
-    start_game = pyip.inputYesNo("I see. Are you ready to play now? \n >>>")
-else: 
+# Introduce players to the game
+def gamesetup():
+    print("Intro....\n")
+    print(gamelogo, "\n")
+    # define an object for the users input
+    start_game = pyip.inputYesNo("  Are you ready to play 'Go Fish'? \n >>>")
+    # Allow the player to opt-in when ready to play
+    while start_game != "yes":
+        start_game = pyip.inputYesNo("I see. Are you ready to play now? \n >>>")
+    else: 
+        sleep(.5)
+        print("\n Great! Let's start! \n")
+        print(fishlogo)
+    # Count the number of cards and shuffle the card deck
+    random.shuffle(carddeck)
+    print("The card deck contains", len(carddeck), "cards. \n")
     sleep(.5)
-    print("\n Great! Let's start! \n")
-    print(fishlogo)
+    print(" Shuffling \n")
+    print("\n")
+    print("         Everyday I'm shuffling...\n")
+    sleep(1)
+    print("                            Shuffling...\n")
+    sleep(1)
+    print("                                   Shuffling...\n")
+    # Deal 7 Cards to 2 Players
+    for x in range(7):
+        p1deal = random.choice(carddeck)
+        p1hand.append(p1deal)
+        carddeck.remove(p1deal)
+    for x in range(7):
+        p2deal = random.choice(carddeck)
+        p2hand.append(p2deal)
+        carddeck.remove(p2deal)
+    print("P1 Card Sets:", p1matches)
+    print("P2 Card Sets:", p2matches)
 
-#Count the number of cards and shuffle the card deck
-random.shuffle(carddeck)
-print("The card deck contains", len(carddeck), "cards. \n")
-sleep(.5)
-print(" Shuffling \n")
-print("\n")
-print("         Everyday I'm shuffling...\n")
-sleep(1)
-print("                            Shuffling...\n")
-sleep(1)
-print("                                   Shuffling...\n")
-
-#Deal 7 Cards to 2 Players
-for x in range(7):
-    p1deal = random.choice(carddeck)
-    p1hand.append(p1deal)
-    carddeck.remove(p1deal)
-
-for x in range(7):
-    p2deal = random.choice(carddeck)
-    p2hand.append(p2deal)
-    carddeck.remove(p2deal)
-    
-
-def CheckforMatches(p1hand):
-    if len(p1hand) == len(set(p1hand)):
-        return False
+def CheckforMatches(hand):
+    if len(hand) != len(set(hand)):
+        card_set = [card for card in hand if hand.count(card) == 4]
+        if card_set:
+            return True
     else:
-        return True
+        return False
 
-matches = CheckforMatches(p1hand)
-if matches:
-    print("You have matches \n")
-else:
-    print("You do not have matches right now. \n")
-
+def evalmatches(hand, matches):
+    books = CheckforMatches(hand)
+    if books:
+        print("You have matches \n")
+        # Identify matching number
+        card_set = list(set([card for card in hand if hand.count(card) == 4]))
+        set_number = card_set[0]
+        # add matching number to matches list
+        matches.append(set_number)
+        # remove number from player hand
+        while set_number in hand:
+            hand.remove(set_number)
+        print(p1matches)
+        print(hand)
+        print(len(p1matches))
+    else:
+        print("You do not have matches right now. \n")
 
 print(p1hand)
 print(p2hand)
-
-    
-
 
 #print the number of cards remaininig in the pond and the number of cards in each player's hand
 
 print("Player 1 is holding", len(p1hand), "cards.")
 print("Player 2 is holding", len(p2hand), "cards.")
 print("The pond contains", len(carddeck), "cards. \n")
+
+def game():
+    while true:
+    # Player Turn: 
+    #   Check Matches
+        evalmatches(p1hand, p1matches)
+    #   Ask Card
+    #       a. input validation
+    #           1. is card in hand?
+    #       b. check p2 hand
+    #           1. in p2 hand
+    #               a. move card to p1 hand
+    #                   1. check matches
+    #                   2. check win
+    #                       a. deck == 0 or p1hand == 0 or p2hand == 0
+    #                           1. break
+    #                   3. ask again
+    #           2. not in p2 hand
+    #               a. draw card
+    #               b. end turn
+    # 
+    # Bot turn:
+    #   Check Matches
+        evalmatches(p2hand, matches)
+    #       a. Yes matches
+    #           1. move card to player sets
+    #       b. no matches
+    #           1. continue
+    #   Ask Card
+    #       a. bot choose random card
+    #       b. check p1 hand
+    #           1. in p1 hand
+    #               a. move card to p2 hand
+    #                   1. check matches
+    #                   2. check win
+    #                       a. deck == 0 or p1hand == 0 or p2hand == 0
+    #                   3. ask again
+    #           2. not in p1 hand
+    #               a. draw card
+    #               b. end turn
+    # 
+    # Win:
+    #  1. count player sets vs bot sets
+    #  2. determine winner
+    #  3. Print winner
+    # 
+    # 
 
 
 
@@ -98,7 +152,7 @@ print("The pond contains", len(carddeck), "cards. \n")
 
 
 #if choice == go_first:
- #   print("You chose...wisely.You go first. \n")
+ #print("You chose...wisely.You go first. \n")
   #  print("You are holding: ", p1hand, "\n")
     
 
@@ -108,28 +162,3 @@ print("The pond contains", len(carddeck), "cards. \n")
  #   print("You chose...poorly. Player 2 goes first. \n")
   #  print("Player 2 is holding: ", p2hand, "\n")
    # pyip.inputChoice("Which card would you like to play? \n", p2hand)
-
-
-
-
-  #  Which value would you like to ask for? \n")
-   # for cards in p1hand:
-    #    if values in p1hand:
-     #       print(values)
-   
-        #options = str(values[0])
-        #print(options)
-        #print(p1hand)
-        #guess = pyip.inputChoice(p1hand)
-    
-# p1guess = pyip.inputChoice(options)
-
-#else: 
- #   print("You chose...poorly. Player 2 goes first. \n")
-  #  for cards in p2hand:
-   #     if values in p2hand: 
-    #    options =    print(values)
-    #
-     ##   print(options)
-      #  print(p2hand)
-       # p2guess = pyip.inputChoice(options)
