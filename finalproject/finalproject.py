@@ -33,6 +33,22 @@ def gamesetup():
         sleep(.5)
         print("\n Great! Let's start! \n")
         print(fishlogo)
+    
+    #Choose a color of the day and have the player guess to determine who goes first
+
+    go_first = random.choice(colors)
+
+    #print("Decide who goes first. What color am I thinking of? \n")
+    choice = pyip.inputChoice(colors)
+
+    print("You chose: ", choice, ".  The color was: ", go_first, ". \n")
+
+    if choice == go_first:
+        print("You chose...wisely.You go first. \n")
+        print("You are holding: ", p1hand, "\n")
+    else:
+        print("You chose...poorly. Player 2 goes first. \n")
+        
     # Count the number of cards and shuffle the card deck
     random.shuffle(carddeck)
     print("The card deck contains", len(carddeck), "cards. \n")
@@ -81,7 +97,7 @@ def evalmatches(hand, matches):
         print(len(p1matches))
     else:
         print("You do not have matches right now. \n")
-
+gamesetup()
 print(p1hand)
 print(p2hand)
 
@@ -92,11 +108,20 @@ print("Player 2 is holding", len(p2hand), "cards.")
 print("The pond contains", len(carddeck), "cards. \n")
 
 def game():
-    while true:
+    while True:
     # Player Turn: 
     #   Check Matches
         evalmatches(p1hand, p1matches)
-    #   Ask Card
+        evalmatches(p2hand, p2matches)
+        print(p1matches)
+        print(p2matches)
+        print(p1score)
+        print(p2score)
+        print(success)
+
+    #   Prompt the player for which card to play 
+        #guess = pyip.inputChoice("Which card would you like to play? ", p1hand)
+
     #       a. input validation
     #           1. is card in hand?
     #       b. check p2 hand
@@ -113,7 +138,7 @@ def game():
     # 
     # Bot turn:
     #   Check Matches
-        evalmatches(p2hand, matches)
+        evalmatches(p2hand, p2matches)
     #       a. Yes matches
     #           1. move card to player sets
     #       b. no matches
@@ -138,7 +163,7 @@ def game():
     # 
     # 
 
-
+game()
 
 #Choose a color of the day and have the player guess to determine who goes first
 
