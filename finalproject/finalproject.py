@@ -35,7 +35,7 @@ def gamesetup():
         print(fishlogo)
     
     #Choose a color of the day and have the player guess to determine who goes first
-
+    print("Let's see who goes first. \n")
     go_first = random.choice(colors)
 
     #print("Decide who goes first. What color am I thinking of? \n")
@@ -44,7 +44,7 @@ def gamesetup():
     print("You chose: ", choice, ".  The color was: ", go_first, ". \n")
 
     if choice == go_first:
-        print("You chose...wisely.You go first. \n")
+        print("You chose...wisely. You go first. \n")
         print("You are holding: ", p1hand, "\n")
     else:
         print("You chose...poorly. Player 2 goes first. \n")
@@ -113,10 +113,10 @@ def game():
     #   Check Matches
         evalmatches(p1hand, p1matches)
         evalmatches(p2hand, p2matches)
-        print(p1matches)
-        print(p2matches)
-        print(p1score)
-        print(p2score)
+        print("Player 1 matches: ", p1matches)
+        print("Player 2 matches: ", p2matches)
+        print("Player 1 score: ", p1score)
+        print("Player 2 score: ", p2score)
         print(success)
 
 
