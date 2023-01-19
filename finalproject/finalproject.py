@@ -108,7 +108,7 @@ print("Player 2 is holding", len(p2hand), "cards.")
 print("The pond contains", len(carddeck), "cards. \n")
 
 def game():
-    while True:
+   # while True:
     # Player Turn: 
     #   Check Matches
         evalmatches(p1hand, p1matches)
@@ -118,6 +118,7 @@ def game():
         print(p1score)
         print(p2score)
         print(success)
+
 
     #   Prompt the player for which card to play 
         #guess = pyip.inputChoice("Which card would you like to play? ", p1hand)
